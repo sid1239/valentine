@@ -1,0 +1,714 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #FFE5EC 0%, #FFC2D4 50%, #FFB5C9 100%);
+}
+
+/* Floating hearts background */
+.floating-hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.3;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Main Valentine Container */
+.valentine-container {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* Teddy Bear Animation */
+.teddy-bear {
+  font-size: 6rem;
+  animation: bounceAndWave 2s ease-in-out infinite;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 10px 20px rgba(255, 105, 180, 0.3));
+}
+
+@keyframes bounceAndWave {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+}
+
+/* Question Container */
+.question-container {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.valentine-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: #FF1493;
+  text-shadow: 
+    3px 3px 0 #FFB5C9,
+    6px 6px 0 rgba(255, 105, 180, 0.3);
+  margin-bottom: 1rem;
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+.valentine-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #FF69B4;
+  text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+}
+
+@keyframes titlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Buttons Container */
+.buttons-container {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  min-height: 80px;
+}
+
+/* Yes Button */
+.yes-button {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 1.2rem 3rem;
+  background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 
+    0 10px 30px rgba(255, 20, 147, 0.4),
+    inset 0 -3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.yes-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.yes-button:hover::before {
+  left: 100%;
+}
+
+.yes-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 15px 40px rgba(255, 20, 147, 0.6),
+    inset 0 -3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.yes-button:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* No Button */
+.no-button {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #FFB5C9 0%, #FFC2D4 100%);
+  color: #FF1493;
+  border: 3px solid #FF69B4;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+  position: fixed;
+}
+
+.no-button:hover {
+  background: linear-gradient(135deg, #FFC2D4 0%, #FFE5EC 100%);
+}
+
+/* Decorative Hearts */
+.decorative-hearts {
+  display: flex;
+  gap: 2rem;
+  font-size: 2.5rem;
+  animation: heartBounce 2s ease-in-out infinite;
+}
+
+.deco-heart {
+  animation: rotate 4s linear infinite;
+  display: inline-block;
+}
+
+.deco-heart:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.deco-heart:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes heartBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rotate {
+  0%, 100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+/* Celebration Screen */
+.celebration-screen {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #C71585 100%);
+  animation: celebrationBg 4s ease-in-out infinite;
+  overflow: hidden;
+}
+
+@keyframes celebrationBg {
+  0%, 100% {
+    background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #C71585 100%);
+  }
+  25% {
+    background: linear-gradient(135deg, #FF1493 0%, #FF69B4 50%, #FFB5C9 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, #C71585 0%, #FF69B4 50%, #FF1493 100%);
+  }
+  75% {
+    background: linear-gradient(135deg, #FFB5C9 0%, #FF1493 50%, #C71585 100%);
+  }
+}
+
+/* Fireworks Animation */
+.fireworks-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.firework {
+  position: absolute;
+  font-size: 2rem;
+  animation: fireworkBurst 2s ease-out infinite;
+}
+
+@keyframes fireworkBurst {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Balloons Animation */
+.balloons-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.balloon {
+  position: absolute;
+  font-size: 3rem;
+  animation: floatBalloon 6s ease-in-out infinite;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+}
+
+.balloon-1 {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.balloon-2 {
+  left: 30%;
+  animation-delay: 1s;
+}
+
+.balloon-3 {
+  left: 70%;
+  animation-delay: 2s;
+}
+
+.balloon-4 {
+  left: 90%;
+  animation-delay: 0.5s;
+}
+
+@keyframes floatBalloon {
+  0% {
+    bottom: -100px;
+    transform: translateX(0) rotate(-10deg);
+  }
+  50% {
+    transform: translateX(30px) rotate(10deg);
+  }
+  100% {
+    bottom: 110vh;
+    transform: translateX(-20px) rotate(-10deg);
+  }
+}
+
+.celebration-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.celebration-heart {
+  position: absolute;
+  font-size: 2rem;
+  animation: heartFall 3s linear forwards;
+}
+
+@keyframes heartFall {
+  0% {
+    top: -50px;
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    top: 100vh;
+    opacity: 0;
+    transform: rotate(360deg) scale(0.5);
+  }
+}
+
+.celebration-content {
+  position: relative;
+  z-index: 11;
+  text-align: center;
+  padding: 2rem;
+  animation: contentSlideIn 1s ease-out;
+}
+
+@keyframes contentSlideIn {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.celebration-teddy {
+  font-size: 10rem;
+  animation: happyDance 0.8s ease-in-out infinite;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.4));
+}
+
+@keyframes happyDance {
+  0%, 100% {
+    transform: rotate(-15deg) scale(1) translateY(0);
+  }
+  25% {
+    transform: rotate(15deg) scale(1.15) translateY(-20px);
+  }
+  50% {
+    transform: rotate(-10deg) scale(1.1) translateY(-10px);
+  }
+  75% {
+    transform: rotate(10deg) scale(1.15) translateY(-20px);
+  }
+}
+
+.celebration-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(4rem, 12vw, 8rem);
+  color: white;
+  text-shadow: 
+    5px 5px 0 #FFB5C9,
+    10px 10px 0 rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
+  animation: celebrationPulse 1s ease-in-out infinite;
+}
+
+@keyframes celebrationPulse {
+  0%, 100% {
+    transform: scale(1) rotate(-3deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(3deg);
+  }
+}
+
+.celebration-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #FFF;
+  text-shadow: 
+    3px 3px 0 #FF1493,
+    6px 6px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.5rem;
+  animation: slideInBounce 1.5s ease-out;
+  letter-spacing: 2px;
+}
+
+@keyframes slideInBounce {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.celebration-message {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: white;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.5);
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 1s ease-out 0.3s backwards;
+}
+
+.romantic-message {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-weight: 600;
+  color: #FFF;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  display: inline-block;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 1s ease-out 0.5s backwards;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.celebration-hearts {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  animation: heartBounce 0.6s ease-in-out infinite, fadeInUp 1s ease-out 0.7s backwards;
+  letter-spacing: 10px;
+}
+
+.love-quote {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: #FFF;
+  text-shadow: 
+    3px 3px 0 rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  animation: fadeInUp 1s ease-out 0.9s backwards;
+  padding: 0 1rem;
+}
+
+.sparkles {
+  font-size: 2.5rem;
+  animation: sparkle 1.5s ease-in-out infinite, fadeInUp 1s ease-out 1.1s backwards;
+  margin-bottom: 1.5rem;
+  letter-spacing: 15px;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    opacity: 0.6;
+    transform: scale(1.3) rotate(10deg);
+  }
+  75% {
+    opacity: 0.6;
+    transform: scale(1.3) rotate(-10deg);
+  }
+}
+
+.confetti-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: #FFF;
+  text-shadow: 
+    2px 2px 0 #FF1493,
+    4px 4px 0 rgba(0, 0, 0, 0.2);
+  animation: bounceIn 1.2s ease-out 1.3s backwards;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Animated Roses */
+.roses-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 3rem;
+  animation: fadeInUp 1s ease-out 1.5s backwards;
+}
+
+.rose {
+  animation: roseGrow 2s ease-in-out infinite;
+  display: inline-block;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+.rose:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.rose:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.rose:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes roseGrow {
+  0%, 100% {
+    transform: scale(1) rotate(-10deg);
+  }
+  50% {
+    transform: scale(1.3) rotate(10deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .teddy-bear {
+    font-size: 4rem;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .yes-button {
+    font-size: 1.3rem;
+    padding: 1rem 2.5rem;
+  }
+
+  .no-button {
+    font-size: 1.1rem;
+    padding: 0.9rem 2rem;
+  }
+
+  .decorative-hearts {
+    font-size: 2rem;
+    gap: 1.5rem;
+  }
+
+  .celebration-teddy {
+    font-size: 6rem;
+  }
+
+  .celebration-hearts {
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+  }
+
+  .sparkles {
+    font-size: 2rem;
+    letter-spacing: 10px;
+  }
+
+  .roses-container {
+    gap: 1.5rem;
+    font-size: 2.5rem;
+  }
+
+  .romantic-message {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .confetti-text {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .valentine-container {
+    padding: 1rem;
+  }
+
+  .teddy-bear {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .question-container {
+    margin-bottom: 2rem;
+  }
+
+  .yes-button {
+    font-size: 1.2rem;
+    padding: 0.9rem 2rem;
+  }
+
+  .no-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.8rem;
+  }
+
+  .celebration-teddy {
+    font-size: 4.5rem;
+  }
+
+  .celebration-hearts {
+    font-size: 2rem;
+    letter-spacing: 3px;
+  }
+
+  .sparkles {
+    font-size: 1.5rem;
+    letter-spacing: 8px;
+  }
+
+  .roses-container {
+    gap: 1rem;
+    font-size: 2rem;
+  }
+
+  .romantic-message {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .balloon {
+    font-size: 2rem;
+  }
+}
+
